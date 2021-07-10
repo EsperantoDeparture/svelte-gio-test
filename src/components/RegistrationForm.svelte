@@ -9,11 +9,11 @@
   >
     ENTER THE DATA TO THE REGISTER
   </h3>
-  <form class="mx-12 mt-14 grid-cols-1 grid gap-6">
+  <div class="mx-12 mt-14 grid-cols-1 grid gap-6">
     <Input placeholder="User Name" />
     <Input placeholder="Email" />
     <FileUpload />
-  </form>
+  </div>
 </section>
 
 <style>
