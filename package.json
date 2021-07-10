@@ -23,6 +23,9 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
   },
   "dependencies": {
+    "firebase": "^8.7.1",
+    "rxfire": "^4.0.0",
+    "rxjs": "^6.6.7",
     "sirv-cli": "^1.0.0"
   }
 }
