@@ -2,8 +2,9 @@
   export let file;
 </script>
 
-<div
-  class="grid justify-center place-content-center place-items-center border border-white w-full h-48 cursor-pointer"
+<button
+  on:click={() => {}}
+  class="grid justify-center place-content-center place-items-center border border-white w-full h-48 cursor-pointer focus:ring-white focus:ring-1 focus:outline-none"
 >
   <svg
     width="42"
@@ -15,4 +16,4 @@
     <path d="M42 18H24V0H18V18H0V24H18V42H24V24H42V18Z" fill="white" />
   </svg>
   <p class="text-white mt-2">Upload image</p>
-</div>
+</button>
