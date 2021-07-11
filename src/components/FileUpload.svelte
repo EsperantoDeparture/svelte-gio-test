@@ -1,15 +1,32 @@
-<script>
-  export let file;
+<script lang="ts">
+  import { storage } from "../firebase";
+
+  export let fileUrl;
+
+  const storageRef = storage.ref();
 
   let modalOpened = false;
+
+  async function readFile(f: File) {
+    const fileRef = storageRef.child(`profile-pictures/${f.name}`);
+    try {
+      const snapshot = await fileRef.put(f);
+      fileUrl = await snapshot.ref.getDownloadURL();
+      console.log(fileUrl);
+      modalOpened = false;
+    } catch (_error) {}
+  }
 </script>
 
 <button
   on:click={() => {
     modalOpened = !modalOpened;
   }}
-  class="grid justify-center place-content-center place-items-center border border-white w-full h-48 cursor-pointer focus:ring-white focus:ring-1 focus:outline-none"
+  class="relative grid justify-center place-content-center place-items-center border border-white w-full h-48 cursor-pointer focus:ring-white focus:ring-1 focus:outline-none"
 >
+  {#if fileUrl}
+    <img alt="" class="absolute top-0 left-0 w-full h-full" src={fileUrl} />
+  {/if}
   <svg
     width="42"
     height="42"
@@ -28,8 +45,10 @@
   >
     <article class="rounded-lg bg-white max-w-lg">
       <div class="flex p-2 border-b-2 border-gray-200 items-center">
-        <div class="flex-grow-0 flex-shrink" />
-        <div class="flex-grow text-center uppercase">Upload your image</div>
+        <div style="width: 16px;" class="flex-grow-0 flex-shrink" />
+        <div class="flex-grow font-semibold text-center uppercase">
+          Upload your image
+        </div>
         <div
           on:click={() => (modalOpened = false)}
           class="flex-grow-0 flex-shrink cursor-pointer"
@@ -77,6 +96,8 @@
           type="file"
           class="invisible"
           style="display: none;"
+          accept=".jpg, .jpeg, .png"
+          on:change={(ev) => readFile(ev.target.files[0])}
         />
       </div>
     </article>
