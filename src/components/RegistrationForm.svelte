@@ -34,15 +34,15 @@
       console.log(username, email);
       emailError = "";
       usernameError = "";
-      if (!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)) {
+      if (email && !/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)) {
         emailError = "Include an @ sign to complete your email";
+      }
+      if (!username) {
+        return;
       }
       const {
         docs: [user],
-      } = await users
-        .where("username", "==", username)
-        .where("email", "==", email)
-        .get();
+      } = await users.where("username", "==", username).get();
 
       if (user) {
         usernameError = "Bummer, this user name is already taken";
@@ -53,6 +53,10 @@
     changesSubs.next({ username, email });
   }
 
+  /**
+   * Adds the new user to the users collection
+   * in firestore.
+   */
   async function createUser() {
     if (usernameError || emailError || !fileUrl) {
       return;
