@@ -7,10 +7,14 @@
 
   let modalOpened = false;
 
-  async function readFile(f: File) {
-    const fileRef = storageRef.child(`profile-pictures/${f.name}`);
+  /**
+   * Uploads a file to Cloud Storage
+   * @param file File to be uploaded
+   */
+  async function uploadFile(file: File) {
+    const fileRef = storageRef.child(`profile-pictures/${file.name}`);
     try {
-      const snapshot = await fileRef.put(f);
+      const snapshot = await fileRef.put(file);
       fileUrl = await snapshot.ref.getDownloadURL();
       console.log(fileUrl);
       modalOpened = false;
@@ -97,7 +101,7 @@
           class="invisible"
           style="display: none;"
           accept=".jpg, .jpeg, .png"
-          on:change={(ev) => readFile(ev.target.files[0])}
+          on:change={(ev) => uploadFile(ev.target.files[0])}
         />
       </div>
     </article>
