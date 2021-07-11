@@ -23,7 +23,7 @@
         />
       </svg>
     </div>
-    <div class="lg:min-h-full pt-16 overflow-y-auto">
+    <div class="lg:min-h-full pt-16 lg:overflow-y-auto">
       <UserList />
     </div>
   </div>
