@@ -3,6 +3,8 @@ module.exports = {
   purge: {
     content: ["./src/**/*.svelte"],
     enabled: production, // disable purge in dev
+    whitelistPatterns: [/svelte-/],
+    defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
