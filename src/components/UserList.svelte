@@ -4,7 +4,7 @@
   import User from "./User.svelte";
   import { startWith } from "rxjs/operators";
 
-  const query = db.collection("users").limit(10).orderBy("createdAt");
+  const query = db.collection("users").limit(10).orderBy("createdAt", "desc");
 
   const users = collectionData(query, "id").pipe(startWith([]));
   console.log(users);
