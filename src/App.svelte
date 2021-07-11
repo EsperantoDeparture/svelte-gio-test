@@ -7,7 +7,7 @@
 <div class="lg:overflow-hidden h-screen relative">
   <Header />
   <div class="grid lg:grid-cols-2 w-full h-full split-view">
-    <div class="bg-black lg:min-h-full relative pt-16">
+    <div class="bg-black lg:min-h-full relative pt-16 py-8">
       <RegistrationForm />
       <svg
         width="41"
