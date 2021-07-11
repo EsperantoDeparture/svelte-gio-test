@@ -30,7 +30,11 @@
   class="relative grid justify-center place-content-center place-items-center border border-white w-full h-48 cursor-pointer focus:ring-white focus:ring-1 focus:outline-none"
 >
   {#if fileUrl}
-    <img alt="" class="absolute top-0 left-0 w-full h-full" src={fileUrl} />
+    <img
+      alt=""
+      class="absolute object-cover top-0 left-0 w-full h-full"
+      src={fileUrl}
+    />
   {/if}
   <svg
     width="42"
