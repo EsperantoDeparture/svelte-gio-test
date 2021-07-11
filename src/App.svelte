@@ -4,10 +4,10 @@
   import UserList from "./components/UserList.svelte";
 </script>
 
-<div class="lg:overflow-hidden h-screen">
+<div class="lg:overflow-hidden h-screen relative">
   <Header />
-  <div class="grid lg:grid-cols-2 w-full h-full">
-    <div class="bg-black lg:min-h-full relative">
+  <div class="grid lg:grid-cols-2 w-full h-full split-view">
+    <div class="bg-black lg:min-h-full relative pt-16">
       <RegistrationForm />
       <svg
         width="41"
@@ -23,7 +23,7 @@
         />
       </svg>
     </div>
-    <div class="lg:min-h-full">
+    <div class="lg:min-h-full pt-16 overflow-y-auto">
       <UserList />
     </div>
   </div>
