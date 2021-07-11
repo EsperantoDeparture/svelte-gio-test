@@ -1,4 +1,4 @@
-<div class="p-4 bg-white flex justify-center shadow-md sticky top-0">
+<div class="p-4 bg-white flex justify-center shadow-md sticky top-0 z-50">
   <img
     src="https://getitout.io/wp-content/uploads/2020/04/GET-it-OUT.svg"
     alt=""
