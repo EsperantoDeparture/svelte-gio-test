@@ -6,6 +6,7 @@
   const storageRef = storage.ref();
 
   let modalOpened = false;
+  let dragging = false;
 
   /**
    * Uploads a file to Cloud Storage
@@ -72,9 +73,21 @@
         </div>
       </div>
       <div
+        id="drop-zone"
+        on:drop={(ev) => {
+          ev.preventDefault();
+          dragging = false;
+          const [file] = ev.dataTransfer.items;
+          uploadFile(file.getAsFile());
+        }}
+        on:dragover={(ev) => {
+          ev.preventDefault();
+          dragging = true;
+        }}
         class="py-8 px-16 grid justify-center place-items-center items-center border-2 border-black m-2 rounded-lg border-dashed"
       >
         <svg
+          class:pointer-events-none={dragging}
           width="56"
           height="45"
           viewBox="0 0 56 45"
@@ -91,11 +104,15 @@
           />
         </svg>
         <label
+          class:pointer-events-none={dragging}
           class="text-white font-bold bg-black p-2 mt-2 rounded cursor-pointer"
           for="file-input">Choose an image file from your computer</label
         >
-        <p class="text-sm mt-2">Or drag and drop an image file here</p>
+        <p class:pointer-events-none={dragging} class="text-sm mt-2">
+          Or drag and drop an image file here
+        </p>
         <input
+          class:pointer-events-none={dragging}
           id="file-input"
           type="file"
           class="invisible"
