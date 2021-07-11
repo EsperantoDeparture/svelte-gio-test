@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Header from "./components/Header.svelte";
   import RegistrationForm from "./components/RegistrationForm.svelte";
   import UserList from "./components/UserList.svelte";
